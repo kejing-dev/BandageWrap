@@ -8,7 +8,8 @@ import array, math, os, sys, wave
 HERE = os.path.dirname(os.path.abspath(__file__))
 SFX = os.path.join(HERE, "..", "app", "src", "main", "assets", "sfx")
 MASTER = 0.80
-EVENTS = [("turn", 1.0), ("turn_2", 1.0), ("turn_3", 1.0), ("whole", 0.9), ("select", 0.7), ("correct", 0.8), ("nudge", 0.7), ("stage", 0.8), ("solved", 0.85)]
+# Sound.kt: turn = rustle / rustle_2 alternating at 0.9, aligned = click 0.8, done = done 0.85
+EVENTS = [("rustle", 0.9), ("rustle_2", 0.9), ("rustle", 0.9), ("click", 0.8), ("done", 0.85)]
 def read(p):
     w = wave.open(p, "rb"); sr = w.getframerate(); ch = w.getnchannels()
     a = array.array("h", w.readframes(w.getnframes()))
@@ -20,7 +21,7 @@ for _ in range(3):
         x, sr = read(os.path.join(SFX, name + ".wav"))
         if sr != SR:
             x = [x[int(i * sr / SR)] for i in range(int(len(x) * SR / sr))]
-        out += [v * g * MASTER for v in x] + [0.0] * int(SR * 0.12)
+        out += [v * g * MASTER for v in x] + [0.0] * int(SR * 0.25)
 w = wave.open(sys.argv[1], "wb"); w.setnchannels(1); w.setsampwidth(2); w.setframerate(SR)
 w.writeframes(array.array("h", [int(max(-1, min(1, v)) * 32767) for v in out]).tobytes()); w.close()
 peak = max(abs(v) for v in out); n = int(SR * 0.02)
