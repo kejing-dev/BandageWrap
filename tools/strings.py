@@ -88,6 +88,7 @@ S = [
  ("s_about", "关于", "About"),
  ("s_about_v", "%s · 出处 · 免责", "%s · sources · disclaimer"),
  ("about_body", "步骤参考 St John Ambulance 公开急救指引（2025-04 临床复核版），已改写；反折螺旋、拇指人字按护理学通用手法写，未核对 SJA。手臂是程序生成的参数化模型；声音是 CC0 录音（Kenney）。只教手法，不替代急救培训，不做伤情判断。", "Steps follow St John Ambulance public first-aid guides (clinically reviewed 04/2025), rewritten; the reverse spiral and thumb spica follow common nursing technique, not checked against SJA. The arm is a procedural model; sounds are CC0 recordings (Kenney). Technique only. Not first aid training, no injury advice."),
+ ("about_free", "与 St John Ambulance、Kenney 无关联，未获其认可。", "Not affiliated with or endorsed by St John Ambulance or Kenney."),
  ("safety", "只教手法，不替代急救培训。", "Technique only. Not first aid training."),
  ("s_howto", "怎么操作", "How to use"),
  ("how_to_title", "怎么操作", "How to use"),

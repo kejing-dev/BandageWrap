@@ -499,6 +499,7 @@ fun ColumnScope.SettingsPage(state: BwUiState, onEvent: (Ui) -> Unit) {
         }
         SettingsAsk.ABOUT -> Column(Modifier.fillMaxWidth().weight(1f), verticalArrangement = Arrangement.spacedBy(12.dp)) {
             Line(rs(R.string.about_body), "about_body", BwType.small, lines = 9)
+            Line(rs(R.string.about_free), "about_free", BwType.small, lines = 2)
             Line(rs(R.string.s_about_v, BuildConfig.VERSION_NAME), "about_v", BwType.label, PicoTheme.colorScheme.labelSecondary, lines = 1)
             Key(rs(R.string.back), "about_back", R.drawable.ic_chevron_left, KeyKind.NORMAL, 64.dp, Modifier.fillMaxWidth()) { onEvent(Ui.Ask(SettingsAsk.NONE)) }
         }

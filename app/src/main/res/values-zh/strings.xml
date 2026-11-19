@@ -80,6 +80,7 @@
     <string name="s_about">关于</string>
     <string name="s_about_v">%s · 出处 · 免责</string>
     <string name="about_body">步骤参考 St John Ambulance 公开急救指引（2025-04 临床复核版），已改写；反折螺旋、拇指人字按护理学通用手法写，未核对 SJA。手臂是程序生成的参数化模型；声音是 CC0 录音（Kenney）。只教手法，不替代急救培训，不做伤情判断。</string>
+    <string name="about_free">与 St John Ambulance、Kenney 无关联，未获其认可。</string>
     <string name="safety">只教手法，不替代急救培训。</string>
     <string name="s_howto">怎么操作</string>
     <string name="how_to_title">怎么操作</string>

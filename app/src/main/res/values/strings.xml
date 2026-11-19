@@ -80,6 +80,7 @@
     <string name="s_about">About</string>
     <string name="s_about_v">%s · sources · disclaimer</string>
     <string name="about_body">Steps follow St John Ambulance public first-aid guides (clinically reviewed 04/2025), rewritten; the reverse spiral and thumb spica follow common nursing technique, not checked against SJA. The arm is a procedural model; sounds are CC0 recordings (Kenney). Technique only. Not first aid training, no injury advice.</string>
+    <string name="about_free">Not affiliated with or endorsed by St John Ambulance or Kenney.</string>
     <string name="safety">Technique only. Not first aid training.</string>
     <string name="s_howto">How to use</string>
     <string name="how_to_title">How to use</string>
