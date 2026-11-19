@@ -205,6 +205,22 @@ object BwController {
         }
     }
 
+    /** BACK / controller B from any layer (D60): one step back, the window reopened when closed, never a quit. */
+    fun onBack(src: String) {
+        val s = _state.value
+        val a = BackRule.decide(s, WindowCtl.open, WindowCtl.recentering)
+        BwLog.i("BACK $src state=${s.designState} window=${WindowCtl.panelState} -> $a")
+        when (a) {
+            BackAction.REOPEN_WINDOW -> WindowCtl.reopen("back")
+            BackAction.WAIT, BackAction.NONE -> Unit
+            BackAction.CLOSE_ASK -> onEvent(Ui.Ask(SettingsAsk.NONE))
+            BackAction.CLOSE_MORE -> onEvent(Ui.More)
+            BackAction.TO_WATCH -> set("back to watch") { it.copy(screen = Screen.WATCH, moreOpen = false) }
+            BackAction.TO_TABLE -> onEvent(Ui.BackToTable)
+            BackAction.TO_LIST -> onEvent(Ui.ToList)
+        }
+    }
+
     private fun pick(id: String, why: String) {
         val w = Wraps.byId(id) ?: return
         playback = null

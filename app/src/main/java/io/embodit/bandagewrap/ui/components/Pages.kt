@@ -20,6 +20,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.focusProperties
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
@@ -88,7 +89,7 @@ fun Key(text: String, name: String, icon: Int? = null, kind: KeyKind = KeyKind.N
     }
     Button(
         onClick = onClick,
-        modifier = modifier.probe(name).height(height),
+        modifier = modifier.noKeyFocus().probe(name).height(height),
         enabled = enabled,
         size = ButtonDefaults.Regular.copy(height = height),
         shape = CircleShape,
@@ -143,7 +144,7 @@ fun <V> Options(label: String, options: List<Pair<V, String>>, selected: V, name
                 SegmentItem(
                     selected = sel,
                     onClick = { onPick(v) },
-                    modifier = Modifier.width(itemWidth).height(48.dp).probe("${name}_$text"),
+                    modifier = Modifier.noKeyFocus().width(itemWidth).height(48.dp).probe("${name}_$text"),
                     textStyle = BwType.label,
                     colors = segColors(),
                     title = { Text(text = text, maxLines = 1, color = if (sel) BwColors.InkOnOrange else PicoTheme.colorScheme.labelPrimary, style = BwType.label, onTextLayout = fits("seg/${name}_$text")) },
@@ -238,7 +239,7 @@ private fun ListPage(state: BwUiState, onEvent: (Ui) -> Unit) {
 private fun WrapRow(w: Wrap, seen: Boolean, onClick: () -> Unit) {
     Button(
         onClick = onClick,
-        modifier = Modifier.fillMaxWidth().height(78.dp).probe("row_${w.id}"),
+        modifier = Modifier.noKeyFocus().fillMaxWidth().height(78.dp).probe("row_${w.id}"),
         size = ButtonDefaults.Regular.copy(height = 78.dp),
         shape = RoundedCornerShape(22.dp),
         colors = ButtonDefaults.buttonColors(containerColor = PicoTheme.colorScheme.fillTertiary, contentColor = PicoTheme.colorScheme.labelPrimary),
@@ -342,7 +343,7 @@ private fun MorePage(state: BwUiState, onEvent: (Ui) -> Unit) {
 private fun MenuItem(text: String, value: String?, name: String, icon: Int, onClick: () -> Unit) {
     Button(
         onClick = onClick,
-        modifier = Modifier.fillMaxWidth().height(68.dp).probe(name),
+        modifier = Modifier.noKeyFocus().fillMaxWidth().height(68.dp).probe(name),
         size = ButtonDefaults.Regular.copy(height = 68.dp),
         shape = RoundedCornerShape(20.dp),
         colors = ButtonDefaults.buttonColors(containerColor = PicoTheme.colorScheme.fillTertiary, contentColor = PicoTheme.colorScheme.labelPrimary),
@@ -544,3 +545,6 @@ fun ColumnScope.SettingsPage(state: BwUiState, onEvent: (Ui) -> Unit) {
         }
     }
 }
+
+/** D60: buttons answer pointers only; a controller key never "clicks" the focused one (纸鸢 Y = quit, 2026-11-18). */
+fun Modifier.noKeyFocus(): Modifier = this.focusProperties { canFocus = false }

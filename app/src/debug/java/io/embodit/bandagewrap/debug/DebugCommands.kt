@@ -98,7 +98,9 @@ object DebugCommands {
                 else -> { ev(Ui.TabTo(Tab.SETTINGS)); ev(Ui.Ask(SettingsAsk.EXIT)) }
             }
             "recenter" -> ev(Ui.Recenter)
+            "back" -> io.embodit.bandagewrap.platform.BackKeys.back("debug")
             "recall" -> WindowCtl.recall("debug")
+            "closewin" -> runCatching { WindowCtl.navigator?.closeWindowContainer(io.embodit.bandagewrap.ui.window.PANEL_ID, io.embodit.bandagewrap.ui.window.PANEL_TAG) }
             "seen" -> if (v == "reset") BwController.resetSeen()
             "fit" -> { if (v == "reset") TextFit.reset(); return TextFit.summary() }
             "dump" -> return when (v) {

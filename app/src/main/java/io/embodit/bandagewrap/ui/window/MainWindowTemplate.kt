@@ -18,6 +18,7 @@ import com.pico.spatial.ui.design.windows.TabBar
 import com.pico.spatial.ui.design.windows.Toolbar
 import com.pico.spatial.ui.platform.ViewPoint
 import io.embodit.bandagewrap.platform.BwLog
+import io.embodit.bandagewrap.platform.controllerKeys
 
 /*
  * 主窗口模板（taste D8「合成一个窗口模板」+ D21 拖动交给系统 + D26 设置里退出应用），产线 prompts/snippets/
@@ -57,7 +58,7 @@ fun MainWindow(pages: List<MainWindowPage>, settings: MainWindowSettings, curren
     require(pages.size in 1..6) { "TabBar holds at most 7 items: 6 pages + Settings" }
     val page = pages.firstOrNull { it.id == current }
 
-    Box(Modifier.fillMaxSize()) {
+    Box(Modifier.fillMaxSize().controllerKeys("window")) {
         if (page != null) {
             Box(Modifier.fillMaxSize().padding(horizontal = 24.dp, vertical = 18.dp)) { page.content() }
         } else {
@@ -73,6 +74,8 @@ fun MainWindow(pages: List<MainWindowPage>, settings: MainWindowSettings, curren
             item(
                 selected = current == p.id,
                 onClick = { BwLog.i("TAB ${p.id}"); onSelect(p.id) },
+                // the TabBar is its own window and keeps key focus after a click: catch BACK / B on the item itself (D60)
+                modifier = Modifier.controllerKeys("tab:${p.id}"),
                 mainContent = { Icon(painter = painterResource(p.icon), contentDescription = p.label) },
                 supportContent = { Text(p.label) },
             )
@@ -80,6 +83,7 @@ fun MainWindow(pages: List<MainWindowPage>, settings: MainWindowSettings, curren
         item(
             selected = current == SETTINGS_PAGE,
             onClick = { BwLog.i("TAB $SETTINGS_PAGE"); onSelect(SETTINGS_PAGE) },
+            modifier = Modifier.controllerKeys("tab:$SETTINGS_PAGE"),
             mainContent = { Icon(painter = painterResource(settings.icon), contentDescription = settings.label) },
             supportContent = { Text(settings.label) },
         )
