@@ -251,7 +251,7 @@ private fun WrapRow(w: Wrap, seen: Boolean, onClick: () -> Unit) {
             painter = painterResource(if (seen) R.drawable.ic_check_circle else R.drawable.ic_play_circle),
             contentDescription = if (seen) rs(R.string.seen_mark) else null,
             modifier = Modifier.size(30.dp),
-            tint = if (seen) BwColors.Passable else PicoTheme.colorScheme.labelSecondary,
+            tint = if (seen) BwColors.PassInk else PicoTheme.colorScheme.labelSecondary,
         )
     }
 }
@@ -400,7 +400,7 @@ private fun AlignPage(state: BwUiState, onEvent: (Ui) -> Unit) {
         } else {
             ArmPicture(PicKind.ALIGN, 120.dp)
             val seenText = if (state.handSeen) rs(if (left) R.string.see_left else R.string.see_right) else rs(if (left) R.string.no_left else R.string.no_right)
-            Line(seenText, "align_status", BwType.label, if (state.handSeen) BwColors.Passable else PicoTheme.colorScheme.labelPrimary, lines = 2)
+            Line(seenText, "align_status", BwType.label, PicoTheme.colorScheme.labelPrimary, lines = 2)
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(16.dp)) {
                 Key(rs(R.string.manual_short), "manual_short", R.drawable.ic_open_with, KeyKind.NORMAL, 64.dp, Modifier.weight(1f)) { onEvent(Ui.ManualAlign) }
                 Key(rs(R.string.m_table_short), "align_table", R.drawable.ic_table_restaurant, KeyKind.NORMAL, 64.dp, Modifier.weight(1f)) { onEvent(Ui.BackToTable) }

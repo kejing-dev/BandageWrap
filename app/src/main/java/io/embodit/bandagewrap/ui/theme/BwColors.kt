@@ -8,6 +8,7 @@ object BwColors {
     val Lead = Color(0xFFF26B1D) // design-style: fixed-figma-color leadOrange: main key, roll arrow, next-turn line
     val InkOnOrange = Color(0xFF1F1408) // design-style: fixed-figma-color inkOnOrange (≈ 6:1 on the orange)
     val Passable = Color(0xFF5FD3A4) // design-style: fixed-figma-color passable: aligned, watched ✓
+    val PassInk = Color(0xFF1F7A57) // design-style: fixed-figma-color passable, darkened for icons on the light glass (≥ 3:1)
     val Alert = Color(0xFFFFB648) // design-style: fixed-figma-color alert: inline bars
     val DangerFill = Color(0xFFFF8A85) // design-style: fixed-figma-color quit key
     val OnError = Color(0xFF0A0D10) // design-style: fixed-figma-color ink on the danger fill
