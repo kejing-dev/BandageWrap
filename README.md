@@ -58,7 +58,7 @@ Release 页面上的 APK 是 `assembleRelease` 出的未签名包。自己构建
 
 - The arm is a parametric model, not a realistic scan. 手臂是参数化模型，不是写实模型。
 - The bandage rustle is a CC0 paper-slide recording (Kenney). 绷带摩擦声是 Kenney 的 CC0 纸张摩擦录音。
-- Not yet checked on a headset (controller B mapping, stick, hand-tracking alignment, sound). 还没在真机上验证。
+- Checked on a PICO headset (Swan) by the developer; the demo video is still to come. 已在 PICO 头显上验收；演示视频待补。
 
 ## Credits · 致谢
 
